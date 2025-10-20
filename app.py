@@ -25,9 +25,9 @@ return " ".join(tokens)
 # ---------------------- LOAD FAQ DATA ----------------------
 
 @st.cache_data(show_spinner="📚 Loading FAQ knowledge base...")
-def load_faq_data(file_path):
-"""Load FAQ data from a text file."""
-df = pd.read_csv(file_path, sep="|", header=None, names=["Question", "Answer"])
+def load_faq_data(file):
+"""Load FAQ data from a text file uploaded via Streamlit."""
+df = pd.read_csv(file, sep="|", header=None, names=["Question", "Answer"])
 df["Cleaned_Q"] = df["Question"].apply(preprocess_text)
 return df
 
